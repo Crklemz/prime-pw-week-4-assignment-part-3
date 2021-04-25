@@ -7,9 +7,15 @@ const maxItems = 5;
 
 function addItem ( item ){
   if (item) {
-  basket.push(item);
-  console.log('Item added was', item);
-  return true;
+    if (isFull() === false) {
+      basket.push(item);
+      console.log('Item added was', item);
+      return true;
+    }
+    else {
+      console.log('item', item , 'was not added because basket is full.');
+      return;
+    }
   }// End if statement
 else {
   console.log('no item was added to the list');
@@ -29,18 +35,18 @@ function empty () {
     console.log(`basket is ${basket}`);
   }
   else {
-    console.log('Basket is empty');
+    console.log('The basket has been emptied');
   }
   return;
 }//End empty
 
 function isFull () {
   if ( basket.length >= maxItems ) {
-    console.log('basket is full');
+    //console.log('basket is full');
     return true;
   }
   else {
-    console.log('basket is not full');
+    //console.log('basket is not full');
     return false;
   }
 }//End isFull
@@ -55,10 +61,13 @@ addItem ();
 addItem( 'Bacon' );
 empty ();
 addItem ('squid');
-console.log(`Basket is ${basket}`);
+console.log(`Basket contains ${basket}`);
 
 addItem('Pizza');
 addItem('Cheese');
 
 listItems();
-isFull();
+
+addItem('hummus');
+addItem('kale');
+addItem('olive oil');
